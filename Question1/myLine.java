@@ -10,7 +10,7 @@ public class myLine {
         end = new myPoint(x2, y2);
     }
 
-    public myLine(myLine begin, myPoint end){
+    public myLine(myPoint begin, myPoint end){ //fix
         this.begin = begin; // check line 
         this.end = end;
     }
@@ -64,9 +64,39 @@ public class myLine {
         end.setY(y); // set ends of y
     }
 
-    // retirns both the x and y begin as an array
+    // returns both the x and y begin as an array
     public int[] getBeginXY() {
         return begin.getXY();
+    }
+
+    public void setBeginXY(int x, int y) {
+        begin.setXY(x, y);
+    }
+
+    public int[] getEndXY() {
+        return end.getXY();
+    }
+
+    public void setEndXY(int x, int y) {
+        end.setXY(x, y);
+    }
+
+    // gives length of the line
+    public double getLength() {
+        return begin.distance(end);
+    }
+
+    // gives the slope of the line
+    public double getGradient() {
+        int xDiff = getEndX() - getBeginX();
+        int yDiff = getEndY() - getBeginY();
+        return Math.atan2(yDiff, xDiff);
+    }
+
+    // displays the return of the line with the start and end 
+    @Override
+    public String toString() {
+        return "MyLine: [ begin = " + begin + ", end = " + end + "]";
     }
 
 }
